@@ -7,6 +7,11 @@ Rails.application.routes.draw do
   
    get 'posts/new', to: 'posts#new'
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :new, :create]do
+    member do
+      get :likes
+    end
+  end
   resources :posts, only: [:index, :new, :create, :destroy]
+  resources :favorites, only: [:create, :destroy]
 end
