@@ -8,17 +8,19 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-        <li class="nav-item"><%= link_to 'Users', users_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'マイページ', user_path(current_user), class: 'nav-link'%></li>
+        <li class="nav-item"><%= link_to '投稿一覧', posts_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to '投稿する', new_post_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'メッセージ', rooms_path, class: 'nav-link' %></li>
+        <li class="nav-item"><%= link_to 'ログアウト', logout_path, class: 'nav-link', method: :delete %></li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
-              <li class="dropdown-item"><%= link_to 'My profile', user_path(current_user) %></li>
-              <li class="dropdown-divider"></li>
-              <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
+              <li class="dropdown-item"><%= link_to 'マイページ', user_path(current_user) %></li>
               <li class="dropdown-item"><%= link_to '投稿一覧', posts_path %></li>
               <li class="dropdown-item"><%= link_to '投稿する', new_post_path %></li>
-              <li class="dropdown-item">メッセージ</li>
-              <li class="dropdown-item">マイページ</li>
+              <li class="dropdown-item"><%= link_to 'メッセージ', rooms_path %></li>
+              <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>

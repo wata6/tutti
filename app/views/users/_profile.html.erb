@@ -1,0 +1,48 @@
+<table class="mt-4 table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>プロフィール</th>
+            
+            <th><%= link_to '編集', edit_user_path(@user), class: 'btn btn-primary' %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>名前</td>
+            <td><%= user.name %></td>
+        </tr>
+        <tr>
+            <td>Eメール</td>
+            <td><%= user.email %></td>
+        </tr>
+        <tr>
+            <td>パスワード</td>
+            <td>********</td>
+        </tr>
+        
+        <tr>
+            <td>職業</td>
+            <td><%= user.job %></td>
+        </tr>
+        
+        <tr>
+            <td>活動場所</td>
+            <td><%= user.region %></td>
+        </tr>
+        
+        <tr>
+            <td>経験楽器</td>
+            <td><%= user.instrument %></td>
+        </tr>
+        
+        <tr>
+            <td>演奏経歴</td>
+            <td><%= user.career %></td>
+        </tr>
+        
+        <tr>
+            <td>自己紹介</td>
+            <td><%= user.introduction %></td>
+        </tr>
+    </tbody>
+</table>

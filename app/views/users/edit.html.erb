@@ -1,0 +1,54 @@
+<h1><%= @user.name %> のプロフィール編集ページ</h1>
+<%= link_to '戻る', user_path %>
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+      <%= form_with(model: @user, local: true) do |f| %> 
+        <div class="form-group">
+          <%= f.label :name, '名前' %>
+          <%= f.text_field :name, class: 'form-control' %>
+        </div>
+          
+        <div class="form-group">  
+          <%= f.label :email, 'Eメール' %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group"> 
+          <%= f.label :password, 'パスワード' %>
+          <%= f.text_field :password , class: 'form-control'%>
+        </div>
+        
+        <div class="form-group"> 
+          <%= f.label :password_confirmation, 'パスワード（再）' %>
+          <%= f.text_field :password_confirmation, class: 'form-control' %>
+        </div>
+         
+        <div class="form-group"> 
+          <%= f.label :job, '職業' %>
+          <%= f.text_field :job, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group"> 
+          <%= f.label :region, '活動場所' %>
+          <%= f.text_field :region, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group"> 
+          <%= f.label :instrument, '経験楽器' %>
+          <%= f.text_field :instrument, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group"> 
+          <%= f.label :career, '演奏経歴' %>
+          <%= f.text_area :career, class: 'form-control', rows: 5%>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :introduction, '自己紹介' %>
+          <%= f.text_area :introduction, class: 'form-control', rows: 5%>
+        </div>
+        
+        <%= f.submit 'プロフィールを編集する', class: 'btn btn-primary btn-block' %>
+      <% end %>
+  </div>
+</div>

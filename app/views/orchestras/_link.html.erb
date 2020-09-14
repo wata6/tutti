@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs nav-justified mb-3">
+  <li class="nav-item"><a href="<%= user_path(user) %>" class="nav-link <%= 'active' if current_page?(user_path(user)) %>">Profile  <span class="badge badge-secondary"></span></a></li>
+  <% if current_user.orchestra.present? %>
+  <li class="nav-item"><a href="<%= orchestra_path(user) %>" class="nav-link <%= 'active' if current_page?(orchestra_path(user)) %>">Orchestra  <span class="badge badge-secondary"></span></a></li>
+  <% else %>
+  <li class="nav-item"><a href="<%= new_orchestra_path(user) %>" class="nav-link <%= 'active' if current_page?(new_orchestra_path(user)) %>">Orchestra  <span class="badge badge-secondary"></span></a></li>
+  <% end %>
+  <li class="nav-item"><a href="<%= likes_user_path(user) %>" class="nav-link <%= 'active' if current_page?(likes_user_path(user)) %>">Likes  <span class="badge badge-secondary"><%= @count_likes %></span></a></li>
+  <li class="nav-item"><a href="<%= posts_user_path(user) %>" class="nav-link <%= 'active' if current_page?(posts_user_path(user)) %>">Posts  <span class="badge badge-secondary"><%= @count_posts %></span></a></li>
+</ul>

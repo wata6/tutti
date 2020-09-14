@@ -1,0 +1,82 @@
+<h1><%= current_user.name %> の楽団詳細編集ページ</h1>
+<%= link_to '戻る', orchestra_path %>
+<%= form_with(model: @orchestra, local: true) do |f| %> 
+<%= render 'layouts/error_messages', model: f.object %>
+    <table class="mt-4 table table-striped ">
+        <tbody>
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :title, 'タイトル（団体名、アンサンブル名等）' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_field :title, class: 'form-control' %></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :about, '楽団について' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :about, class: 'form-control' , rows: 5%></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :concert_infomation, '演奏会情報' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :concert_infomation, class: 'form-control' , rows: 5%></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :instrument_requirement, '募集楽器' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :instrument_requirement, class: 'form-control', rows: 5 %></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :date, '活動内容および練習日程' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area:date, class: 'form-control' , rows: 5%></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :conditions, '募集条件' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :conditions, class: 'form-control' %></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :cost, '費用' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :cost, class: 'form-control', rows: 5 %></td>
+            </tr>
+            </div>
+            
+            <div class="form-group">
+            <tr>
+                <td><%= f.label :contact, 'お問い合わせについて' %></td>
+            </tr>
+            <tr>
+                <td><%= f.text_area :contact, class: 'form-control', rows: 5 %></td>
+            </tr>
+            </div>
+         
+        </tbody>
+    </table>
+　<%= f.submit '楽団詳細を設定する', class: 'btn btn-primary btn-block' %>
+<% end %>

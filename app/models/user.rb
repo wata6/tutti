@@ -19,12 +19,19 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
+  validates :instrument,  length: { maximum: 50 }
+  validates :introduction,  length: { maximum: 255 }
+  validates :job,  length: { maximum: 50 }
+  validates :career,  length: { maximum: 255 }
+  validates :region, length: { maximum: 50 }
   has_secure_password
+  has_one  :orchestra 
   has_many :posts
-  
   has_many :favorites
   has_many :likes, through: :favorites, source: :post
   
+  has_many :messages, dependent: :destroy
+  has_many :entries, dependent: :destroy
   def favorite(post)
     self.favorites.find_or_create_by(post_id: post.id)
   end

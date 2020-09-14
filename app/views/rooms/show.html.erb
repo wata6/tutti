@@ -1,0 +1,44 @@
+<div class="left-button">
+  <%= link_to "メッセージ一覧に戻る", rooms_path(@roomId) ,class:"edit-link" %>
+</div>
+<h1>DM</h1>
+
+<h4 class="rooms-title">参加者</h4>
+<% @entries.each do |e| %>
+  <div class="user-name">
+  <strong>
+    
+      <a class="rooms-user-link" href="/users/<%= e.user.id %>">
+        <%= e.user.name %>さん
+      </a>
+  </strong>
+  </div>
+<% end %>
+<hr>
+<div class="chats">
+  <div class="chat">
+    <% if @messages.present? %>
+      <% @messages.each do |m| %>
+      <% current_user == m.user ? @class = "text-right" : @class = "text-left"  %>
+        <div class="chat-box <%= @class %>">
+          <div class="chat-face">
+           <img class="rounded img-fluid mb-1" src="<%= gravatar_url(m.user, { size: 30}) %>" alt="">
+           <%= m.user.name %>
+          </div>
+          <div class="alert alert-dark" role="alert"> <strong><%= m.message %></strong> 
+          </div>
+          <small class="text-muted">
+            <%= m.created_at.strftime("%Y-%m-%d %H:%M")%>
+          </small>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="posts text-right">
+    <%= form_for @message do |f| %>
+      <%= f.text_field :message, placeholder: "メッセージを入力して下さい" , size: 70, class:"form-text-field" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+          <%= f.submit "投稿",class: 'form-submit'%>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="row">
+  <aside class="col-sm-3">
+     <%= render 'users/icon',user: current_user%>
+  </aside>
+  <div class="col-sm-8">
+    <%= render 'link',user: current_user%>
+    <%= render 'orchestra', orchestra: @orchestra %>
+  </div>
+</div>

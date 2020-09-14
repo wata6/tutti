@@ -1,0 +1,62 @@
+<table class="mt-4 table table-striped ">
+    <thead>
+        <tr>
+            <th>楽団詳細<%= link_to '編集', edit_orchestra_path, class: 'btn btn-primary' %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>楽団名称</td>
+        </tr>
+        <tr>
+            <td><%= orchestra.title %></td>
+        </tr>
+        <tr>
+            <td>楽団について</td>
+        </tr>
+        <tr>
+            <td><%= orchestra.about %></td>
+        </tr>
+        <tr>
+            <td>演奏会情報</td>
+          
+        </tr>
+        <tr>
+            <td><%= orchestra.concert_infomation %></td>
+        </tr>
+        <tr>
+            <td>募集楽器</td>
+          
+        </tr>
+        <tr>
+            <td><%= orchestra.instrument_requirement %></td>
+        </tr>
+        <tr>
+            <td>活動内容および練習日程</td>
+          
+        </tr>
+        <tr>
+            <td><%= orchestra.date %></td>
+        </tr>
+        <tr>
+            <td>募集条件</td>
+          
+        </tr>
+        <tr>
+            <td><%= orchestra.conditions %></td>
+        </tr>
+        <tr>
+            <td>費用</td>
+          
+        </tr>
+        <tr>
+            <td><%= orchestra.cost %></td>
+        </tr>
+        <tr>
+            <td>お問い合わせについて</td>
+        </tr>
+        <tr>
+            <td><%= orchestra.contact %></td>
+        </tr>
+    </tbody>
+</table>
