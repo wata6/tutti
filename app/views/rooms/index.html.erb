@@ -3,9 +3,13 @@
     <table class="table table-striped">
         <tr>
             <td>
-　　　　　　　　　<!-- 名前からroomの詳細に飛べるようにリンク化 -->
+                <!-- 名前からroomの詳細に飛べるようにリンク化 -->
                 <%= link_to room_path(e.room.id) do %>
-                    <img class="rounded img-fluid" src="<%= gravatar_url(e.user, { size: 40}) %>" alt="">
+                    <% if e.user.image? %>
+                <%= image_tag e.user.image.url(:thumb50) %>
+                <% else %>
+                <%= image_tag "noimage.png", :size => '50x50' %>
+                 <% end %>
                     <%= e.user.name %>
                 <% end %>
             </td>

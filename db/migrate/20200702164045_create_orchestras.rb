@@ -10,7 +10,7 @@ class CreateOrchestras < ActiveRecord::Migration[5.2]
       t.string :conditions
       t.string :cost
       t.string :contact
-      
+
       t.timestamps
     end
   end

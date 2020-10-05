@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :region
       t.string :instrument_requirement
       t.string :content
-      
+
       t.timestamps
     end
   end

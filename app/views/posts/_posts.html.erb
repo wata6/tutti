@@ -1,7 +1,13 @@
 <ul class="list-unstyled">
   <% posts.each do |post| %>
     <li class="media mb-3">
-      <img class="mr-2 rounded" src="<%= gravatar_url(post.user, { size: 50 }) %>" alt="">
+          <%= form_for(post.user) do |f| %>
+            <% if post.user.image? %>
+                <%= image_tag post.user.image.url(:thumb50) %>
+            <% else %>
+                <%= image_tag "noimage.png", :size => '50x50' %>
+            <% end %>
+      <% end %>
       <div class="media-body">
         <div>
           <%= link_to post.user.name, user_path(post.user) %> <span class="text-muted">posted at <%= post.created_at %></span>

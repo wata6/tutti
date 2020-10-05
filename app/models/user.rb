@@ -5,6 +5,7 @@
 #  id              :bigint           not null, primary key
 #  career          :string(255)
 #  email           :string(255)
+#  image           :string(255)
 #  instrument      :string(255)
 #  introduction    :string(255)
 #  job             :string(255)
@@ -19,29 +20,30 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
-  validates :instrument,  length: { maximum: 50 }
-  validates :introduction,  length: { maximum: 255 }
-  validates :job,  length: { maximum: 50 }
-  validates :career,  length: { maximum: 255 }
+  validates :instrument, length: { maximum: 50 }
+  validates :introduction, length: { maximum: 255 }
+  validates :job, length: { maximum: 50 }
+  validates :career, length: { maximum: 255 }
   validates :region, length: { maximum: 50 }
   has_secure_password
-  has_one  :orchestra 
+  has_one  :orchestra
   has_many :posts
   has_many :favorites
   has_many :likes, through: :favorites, source: :post
-  
+
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  mount_uploader :image, ImageUploader
   def favorite(post)
-    self.favorites.find_or_create_by(post_id: post.id)
+    favorites.find_or_create_by(post_id: post.id)
   end
-  
+
   def unfavorite(post)
-    favorite = self.favorites.find_by(post_id: post.id)
+    favorite = favorites.find_by(post_id: post.id)
     favorite.destroy if favorite
   end
-  
+
   def favorite?(post)
-    self.likes.include?(post)
+    likes.include?(post)
   end
 end

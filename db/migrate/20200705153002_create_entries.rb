@@ -5,7 +5,7 @@ class CreateEntries < ActiveRecord::Migration[5.2]
       t.references :room, foreign_key: true
 
       t.timestamps
-      t.index [:user_id, :room_id], unique: true
+      t.index %i[user_id room_id], unique: true
     end
   end
 end

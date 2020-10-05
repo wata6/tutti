@@ -21,13 +21,12 @@
 #
 class Post < ApplicationRecord
   belongs_to :user
-  
+
   validates :title, presence: true, length: { maximum: 50 }
-  validates :instrument_requirement,  length: { maximum: 50 }
+  validates :instrument_requirement, length: { maximum: 50 }
   validates :region, presence: true
   validates :content, presence: true, length: { maximum: 255 }
-  
+
   has_many :favorites
   has_many :users
 end
-

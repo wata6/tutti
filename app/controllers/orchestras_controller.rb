@@ -1,20 +1,20 @@
 class OrchestrasController < ApplicationController
   before_action :require_user_logged_in
-  
+
   def show
     @orchestra = Orchestra.find(params[:id])
     counts(@orchestra.user)
   end
-  
+
   def new
     if logged_in?
       @orchestra = current_user.build_orchestra  # form_with 用
     end
   end
-  
+
   def create
     @orchestra = current_user.build_orchestra(orchestra_params)
-    
+
     if @orchestra.save
       flash[:success] = '楽団詳細を設定しました。'
       redirect_to @orchestra
@@ -39,12 +39,10 @@ class OrchestrasController < ApplicationController
       render :edit
     end
   end
-  
-  
+
   private
 
   def orchestra_params
     params.require(:orchestra).permit(:title, :about, :concert_infomation, :instrument_requirement, :date, :conditions, :cost, :contact)
   end
-
 end
