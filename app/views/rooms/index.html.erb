@@ -5,7 +5,7 @@
             <td>
                 <!-- 名前からroomの詳細に飛べるようにリンク化 -->
                 <%= link_to room_path(e.room.id) do %>
-                    <% if e.user.image? %>
+                <% if e.user.image? %>
                 <%= image_tag e.user.image.url(:thumb50) %>
                 <% else %>
                 <%= image_tag "noimage.png", :size => '50x50' %>
@@ -14,9 +14,12 @@
                 <% end %>
             </td>
             <td>
+               
                <!-- 最新メッセージ内容の最初の7文字を表示する -->
+                <% if Message.find_by(id: e.room.message_ids.last).present? %>
                 <% dm = Message.find_by(id: e.room.message_ids.last).message %>
                 <%= truncate(dm, length: 10) %>
+                <% end %>
             </td>
             <td>
                 <h6 style="color: #C0C0C0;"><%= e.updated_at.strftime("%Y/%m/%d %H:%M") %></h6>

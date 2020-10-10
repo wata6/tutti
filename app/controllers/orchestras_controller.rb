@@ -3,6 +3,8 @@ class OrchestrasController < ApplicationController
 
   def show
     @orchestra = Orchestra.find(params[:id])
+    @user = @orchestra.user
+    room(@user)
     counts(@orchestra.user)
   end
 
@@ -45,4 +47,25 @@ class OrchestrasController < ApplicationController
   def orchestra_params
     params.require(:orchestra).permit(:title, :about, :concert_infomation, :instrument_requirement, :date, :conditions, :cost, :contact)
   end
+
+  def room(user)
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
+    unless @user.id == current_user.id
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id
+            @isRoom = true
+            @roomId = cu.room_id
+          end
+        end
+      end
+      if @isRoom
+      else
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
+  end
+
 end
