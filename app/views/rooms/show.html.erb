@@ -22,7 +22,11 @@
       <% current_user == m.user ? @class = "text-right" : @class = "text-left"  %>
         <div class="chat-box <%= @class %>">
           <div class="chat-face">
-           <img class="rounded img-fluid mb-1" src="<%= gravatar_url(m.user, { size: 30}) %>" alt="">
+           <% if m.user.image? %>
+           <%= image_tag m.user.image.url(:thumb50) %>
+           <% else %>
+           <%= image_tag "noimage.png", :size => '40x40' %>
+           <% end %>
            <%= m.user.name %>
           </div>
           <div class="alert alert-dark" role="alert"> <strong><%= m.message %></strong> 
